@@ -34,10 +34,6 @@ authController.postSignup = (req, res, next) => {
   if (!validationError.isEmpty()) {
     return res.send(JSON.stringify({ Message: validationError.array()[0].msg }))
   }
-
-  if (name.isEmpty()) {
-    res.send(JSON.stringify({ Message: 'Empty' }))
-  }
   User.findOne({ where: { user_name: name } }).then(user => {
     if (user) {
       console.log(user)

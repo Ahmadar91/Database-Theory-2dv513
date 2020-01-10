@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.post('/login', authController.postLogin)
 
-router.post('/signup', [check('name').isLength({ min: 3 }).withMessage('User name must be at least 3 Characters long and only alphabets or numbers').isAlphanumeric().trim(),
+router.post('/signup', [check('username').isLength({ min: 3 }).withMessage('User name must be at least 3 Characters long and only alphabets or numbers').isAlphanumeric().trim(),
   body(
     'password',
     'Please enter a password with only numbers and text and at least 5 characters.'
