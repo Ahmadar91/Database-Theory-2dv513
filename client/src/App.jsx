@@ -1,51 +1,32 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import Home from './screens/home/Home'
+import Login from './screens/authentication/Login'
 import './App.css';
-import Screen from './screens/Screen'
 
-export default class App extends React.Component {
-
-  state;
-
-  constructor(props){
-    super(props)
-    this.state= {
-      page:1
-    }
-    this.changePage = this.changePage.bind(this);
-  }
-
-  render() {
+export default function App() {
     return (
-      <div className="App">
-        <Navbar changePage={()=>this.changePage}></Navbar>
-        <Screen page={this.state.page}></Screen>
-      </div>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+            <Route path="/login">
+              <Login/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
-  }
-
-  changePage(pagenr){
-    this.setState({
-      page:pagenr
-    })
-  }
-
-}
-
-class Navbar extends React.Component {
-
-  render() {
-    return (
-      <div className="Navbar">
-        <button onClick={this.props.changePage(1)}>
-          Home
-          </button>
-        <button onClick={this.props.changePage(2)}>
-          Profile
-          </button>
-        <button onClick={this.props.changePage(3)}>
-          Login
-          </button>
-      </div>
-    )
-  }
 }
