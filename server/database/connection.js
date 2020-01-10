@@ -1,12 +1,6 @@
 const Sequelize = require('sequelize')
 
-const sequelize = new Sequelize('computer', 'root', 'ddon1icnf', {
+module.exports = new Sequelize('computer', 'root', 'ddon1icnfk', {
   host: '127.0.0.1',
   dialect: 'mysql'
 })
-
-sequelize.authenticate().then(() => console.log('Connected to db').catch(err => console.log(err.message)
-)
-)
-module.exports = sequelize
-global.sequelize = sequelize
