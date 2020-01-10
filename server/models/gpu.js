@@ -4,7 +4,8 @@ const Gpu = db.define('gpu', {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    autoIncrement: true
+    autoIncrement: true,
+    primaryKey: true
   },
   name: {
     type: Sequelize.STRING,
