@@ -16,3 +16,5 @@ const User = db.define('users', {
 
 })
 module.exports = User
+// Executing (default): SELECT `id`, `user_name`, `password`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`user_name` = 'dddddddddddddd' LIMIT 1;
+// Executing (default): INSERT INTO `users` (`id`,`user_name`,`password`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?);
