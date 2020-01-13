@@ -5,9 +5,12 @@ computerController.createComputer = (req, res, next) => {
   const data = {
     memory: req.body.memory,
     case: req.body.case,
-    performance: req.body.performance,
-    user_name: req.body.username
-
+    performance: 10,
+    cpu_id: req.body.cpu_id,
+    gpu_id: req.body.gpu_id,
+    mobo_id: req.body.mobo_id,
+    user_name: req.body.username,
+    ram_id: req.body.ram_id
   }
   Computer.findOne(data.name).then(computer => {
     const result = computer[0]
