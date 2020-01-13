@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../database/connection')
-const Ram = db.define('ram', {
+const Ram = db.sequelize.define('ram', {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -28,4 +28,22 @@ const Ram = db.define('ram', {
   }
 
 })
-module.exports = Ram
+function findOne (data) {
+  // console.log('data', data)
+  return db.sequelize.query(`SELECT * FROM ram where name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
+}
+function findAll () {
+  return db.sequelize.query('SELECT * FROM ram', { type: db.sequelize.QueryTypes.SELECT })
+}
+
+function create (data) {
+  return db.connection.query('INSERT INTO ram set ?', data, function (err, results) {
+    if (err) {
+      console.log(err.message)
+    } else {
+      console.log('Successful Query')
+    }
+  })
+}
+
+module.exports = { Ram, create, findOne, findAll }

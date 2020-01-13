@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../database/connection')
-const Mobo = db.define('mobo', {
+const Mobo = db.sequelize.define('mobo', {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -27,4 +27,21 @@ const Mobo = db.define('mobo', {
     type: Sequelize.STRING
   }
 })
-module.exports = Mobo
+function findOne (data) {
+  // console.log('data', data)
+  return db.sequelize.query(`SELECT * FROM mobo where name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
+}
+function findAll () {
+  return db.sequelize.query('SELECT * FROM mobo', { type: db.sequelize.QueryTypes.SELECT })
+}
+
+function create (data) {
+  return db.connection.query('INSERT INTO mobo set ?', data, function (err, results) {
+    if (err) {
+      console.log(err.message)
+    } else {
+      console.log('Successful Query')
+    }
+  })
+}
+module.exports = { Mobo, create, findOne, findAll }

@@ -26,7 +26,7 @@ function create (data) {
       console.log(err.message)
     } else {
       console.log('Successful Query')
-      console.log(data.sql)
+      console.log(data)
     }
   })
 }

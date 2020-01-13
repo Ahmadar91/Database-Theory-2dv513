@@ -53,10 +53,6 @@ authController.postSignup = (req, res, next) => {
         }
         console.log(User.create(data))
         return User.create(data)
-        // return User.create({ user_name: name, password: hashedPassword }).then(name => {
-        //   console.log(`${name}'s auto-generated ID:`, name.id)
-        //   console.log(`${name}'s auto-generated user_name:`, name.user_name)
-        // })
       })
       .then(result => {
         res.send(JSON.stringify({ Message: 'you can login redirect to login.' }))

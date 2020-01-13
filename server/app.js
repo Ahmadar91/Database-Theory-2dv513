@@ -26,6 +26,11 @@ db.sequelize
 
 app.get('', require('./routes/homeRouter'))
 app.use(require('./routes/authRouter'))
+app.use(require('./routes/gpuRouter'))
+app.use(require('./routes/cpuRouter'))
+app.use(require('./routes/moboRouter'))
+app.use(require('./routes/ramRouter'))
+app.use(require('./routes/computerRouter'))
 // catch 404
 app.use((req, res, next) => {
   res.status(404)

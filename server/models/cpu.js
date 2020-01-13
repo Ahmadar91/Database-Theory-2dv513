@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../database/connection')
-const Cpu = db.define('cpu', {
+const Cpu = db.sequelize.define('cpu', {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -31,4 +31,22 @@ const Cpu = db.define('cpu', {
   }
 
 })
-module.exports = Cpu
+
+function findOne (data) {
+  // console.log('data', data)
+  return db.sequelize.query(`SELECT * FROM cpu where name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
+}
+function findAll () {
+  return db.sequelize.query('SELECT * FROM cpu', { type: db.sequelize.QueryTypes.SELECT })
+}
+
+function create (data) {
+  return db.connection.query('INSERT INTO cpu set ?', data, function (err, results) {
+    if (err) {
+      console.log(err.message)
+    } else {
+      console.log('Successful Query')
+    }
+  })
+}
+module.exports = { Cpu, create, findOne, findAll }
