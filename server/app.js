@@ -15,7 +15,7 @@ app.use(logger('dev'))
 
 // db Connection
 const db = require('./database/connection')
-db
+db.sequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.')

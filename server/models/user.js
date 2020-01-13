@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../database/connection')
-const User = db.define('users', {
+const User = db.sequelize.define('users', {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -15,6 +15,19 @@ const User = db.define('users', {
   }
 
 })
-module.exports = User
-// Executing (default): SELECT `id`, `user_name`, `password`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`user_name` = 'dddddddddddddd' LIMIT 1;
-// Executing (default): INSERT INTO `users` (`id`,`user_name`,`password`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?);
+function findOne (data) {
+  console.log('data', data)
+  return db.sequelize.query(`SELECT * FROM users where user_name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
+}
+
+function create (data) {
+  return db.connection.query('INSERT INTO users set ?', data, function (err, results) {
+    if (err) {
+      console.log(err.message)
+    } else {
+      console.log('Successful Query')
+      console.log(data.sql)
+    }
+  })
+}
+module.exports = { User, findOne, create }
