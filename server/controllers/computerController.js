@@ -19,7 +19,7 @@ computerController.createComputer = (req, res, next) => {
       return res.status(400).send(JSON.stringify({ Message: 'name exists already, please pick a different one.' }))
     }
     Computer.create(data)
-    return res.redirect(301, '/')
+    return res.status(200).send(JSON.stringify({ Message: 'created' }))
   })
     .catch(err => {
       console.log(err)
