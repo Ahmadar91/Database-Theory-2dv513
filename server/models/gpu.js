@@ -19,15 +19,16 @@ const Gpu = db.sequelize.define('gpu', {
   }
 
 })
-
+// get one gpu
 function findOne (data) {
   console.log('data', data)
   return db.sequelize.query(`SELECT * FROM gpu where name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
 }
+// get all gpus
 function findAll () {
   return db.sequelize.query('SELECT * FROM gpu', { type: db.sequelize.QueryTypes.SELECT })
 }
-
+// create a gpu
 function create (data) {
   return db.connection.query('INSERT INTO gpu set ?', data, function (err, results) {
     console.log(data)

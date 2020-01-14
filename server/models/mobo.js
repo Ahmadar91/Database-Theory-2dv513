@@ -27,14 +27,16 @@ const Mobo = db.sequelize.define('mobo', {
     type: Sequelize.STRING
   }
 })
+// get one motherboard
 function findOne (data) {
   // console.log('data', data)
   return db.sequelize.query(`SELECT * FROM mobo where name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
 }
+// get all motherboards
 function findAll () {
   return db.sequelize.query('SELECT * FROM mobo', { type: db.sequelize.QueryTypes.SELECT })
 }
-
+// create a motherboard
 function create (data) {
   return db.connection.query('INSERT INTO mobo set ?', data, function (err, results) {
     if (err) {

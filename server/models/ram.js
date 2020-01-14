@@ -28,14 +28,15 @@ const Ram = db.sequelize.define('ram', {
   }
 
 })
+// get one ram
 function findOne (data) {
-  // console.log('data', data)
   return db.sequelize.query(`SELECT * FROM ram where name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
 }
+// get all rams
 function findAll () {
   return db.sequelize.query('SELECT * FROM ram', { type: db.sequelize.QueryTypes.SELECT })
 }
-
+// create a ram
 function create (data) {
   return db.connection.query('INSERT INTO ram set ?', data, function (err, results) {
     if (err) {

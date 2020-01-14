@@ -10,4 +10,5 @@ router.post('/getComputer', computerController.GetOneComputer)
 
 router.get('/getAllComputer', computerController.GetAllComputer)
 
+router.get('/getByGpu', computerController.getByGpu)
 module.exports = router

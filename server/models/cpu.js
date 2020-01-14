@@ -18,7 +18,7 @@ const Cpu = db.sequelize.define('cpu', {
     type: Sequelize.INTEGER
   },
   frequency: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   performance: {
     type: Sequelize.FLOAT
@@ -31,15 +31,16 @@ const Cpu = db.sequelize.define('cpu', {
   }
 
 })
-
+// get one cpu
 function findOne (data) {
   // console.log('data', data)
   return db.sequelize.query(`SELECT * FROM cpu where name = '${data}'`, { type: db.sequelize.QueryTypes.SELECT })
 }
+// get all cpus
 function findAll () {
   return db.sequelize.query('SELECT * FROM cpu', { type: db.sequelize.QueryTypes.SELECT })
 }
-
+// create a cpu
 function create (data) {
   return db.connection.query('INSERT INTO cpu set ?', data, function (err, results) {
     if (err) {
