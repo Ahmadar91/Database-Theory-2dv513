@@ -19,7 +19,7 @@ computerController.createComputer = (req, res, next) => {
       return res.status(400).send(JSON.stringify({ Message: 'name exists already, please pick a different one.' }))
     }
     Computer.create(data)
-    return res.status(200).send(JSON.stringify({ Message: 'build Created' }))
+    return res.redirect(301, '/')
   })
     .catch(err => {
       console.log(err)
@@ -31,7 +31,7 @@ computerController.GetOneComputer = (req, res, next) => {
   Computer.findUser(name).then(computer => {
     const result = computer[0]
     if (!result) {
-      return res.send(JSON.stringify({ Message: 'Invalid' }))
+      return res.status(400).send(JSON.stringify({ Message: 'Invalid' }))
     }
     return res.status(200).send(JSON.stringify({ Message: result[1] }))
   })
@@ -42,7 +42,7 @@ computerController.GetOneComputer = (req, res, next) => {
 computerController.GetAllComputer = (req, res, next) => {
   Computer.getComputers().then(computer => {
     if (!computer) {
-      return res.send(JSON.stringify({ Message: 'empty' }))
+      return res.status(400).send(JSON.stringify({ Message: 'empty' }))
     }
     console.log(computer)
     return res.status(200).send(JSON.stringify({ Message: computer[0][1] }))
@@ -55,7 +55,7 @@ computerController.GetAllComputer = (req, res, next) => {
 computerController.getByGpu = (req, res, next) => {
   Computer.getByGpu().then(computer => {
     if (!computer) {
-      return res.send(JSON.stringify({ Message: 'empty' }))
+      return res.status(400).send(JSON.stringify({ Message: 'empty' }))
     }
     console.log(computer)
     return res.status(200).send(JSON.stringify({ Message: computer[0][1] }))
