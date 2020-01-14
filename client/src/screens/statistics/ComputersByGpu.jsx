@@ -1,8 +1,8 @@
 import React from 'react';
 import BuildsList from './BuildsList';
-import { getAllComputers } from '../../controllers/Network';
+import { getGpuStatistics } from '../../controllers/Network';
 
-export default class Home extends React.Component{
+export default class ComputersByGpu extends React.Component{
 
     state = {
         loading: true
@@ -12,7 +12,7 @@ export default class Home extends React.Component{
     async componentDidMount(){
         this.setState({
             loading:false,
-            computerList:await getAllComputers()
+            gpuBrands:await getGpuStatistics()
         })
     }
 
@@ -20,7 +20,7 @@ export default class Home extends React.Component{
         if(this.state.loading === true) return (<h1>Loading...</h1>)
         return(
             <div>
-                <BuildsList build = {this.state.computerList}/>
+                <BuildsList build = {this.state.gpuBrands}/>
             </div>
         )
     }
