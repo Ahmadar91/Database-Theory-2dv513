@@ -26,11 +26,14 @@ const Computer = db.sequelize.define('computer', {
   mobo_id: {
     type: Sequelize.INTEGER
   },
-  user_id: {
-    type: Sequelize.INTEGER
+  user_name: {
+    type: Sequelize.STRING
   },
   ram_id: {
     type: Sequelize.INTEGER
+  },
+  name: {
+    type: Sequelize.STRING
   }
 })
 

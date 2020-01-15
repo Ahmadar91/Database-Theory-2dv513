@@ -21,7 +21,7 @@ const Ram = db.sequelize.define('ram', {
     type: Sequelize.INTEGER
   },
   frequency: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   performance: {
     type: Sequelize.FLOAT
