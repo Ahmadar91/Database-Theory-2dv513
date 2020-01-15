@@ -17,9 +17,6 @@ const Ram = db.sequelize.define('ram', {
   DDR: {
     type: Sequelize.INTEGER
   },
-  capacity: {
-    type: Sequelize.INTEGER
-  },
   frequency: {
     type: Sequelize.STRING
   },

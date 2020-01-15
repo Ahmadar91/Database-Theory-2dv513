@@ -6,7 +6,6 @@ ramController.createRam = (req, res, next) => {
     name: req.body.name,
     brand: req.body.brand,
     DDR: req.body.DDR,
-    capacity: req.body.capacity,
     frequency: req.body.frequency,
     performance: req.body.performance
   }
